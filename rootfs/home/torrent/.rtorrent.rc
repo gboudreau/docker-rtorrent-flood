@@ -1,7 +1,7 @@
 scgi_local = /tmp/rtorrent.sock
 
 encoding_list = UTF-8
-port_range = 49184-49184
+port_range = 16842-16842
 port_random = no
 check_hash = no
 directory = /data/torrents
@@ -12,17 +12,17 @@ dht.mode.set = off
 protocol.pex.set = no
 
 min_peers = 1
-max_peers = 100
+max_peers = 1000
 min_peers_seed = 1
-max_peers_seed = 50
-max_uploads = 15
+max_peers_seed = 100
+max_uploads = 100
 
 network.xmlrpc.size_limit.set = 10000000
 
 schedule = watch_directory,1,1,"load.start=/data/.watch/*.torrent"
 schedule = untied_directory,5,5,"stop_untied=/data/.watch/*.torrent"
 schedule = scgi_permission,0,0,"execute.nothrow=chmod,\"g+w,o=\",/tmp/rtorrent.sock"
-schedule = insufficient_disk_space,1,30,close_low_diskspace=500M
+schedule = insufficient_disk_space,1,30,close_low_diskspace=5000M
 
 method.set_key=event.download.finished,unrar,"execute={/usr/local/bin/rtunrar.sh,$d.base_path=}"
 method.set_key=event.download.inserted_new,loaded_time,"d.custom.set=addtime,$cat=$system.time=;d.save_full_session="

@@ -11,6 +11,14 @@ const CONFIG = {
     port: 5000,
     socket: true,
     socketPath: '/tmp/rtorrent.sock'
+  },
+  diskUsageService: {
+    // assign desired mounts to include. Refer to "Mounted on" column of `df -P`
+    watchMountPoints: [
+      "/data/torrents",
+      "/data/torrents2",
+      "/data/torrents6"
+    ]
   }
 };
 
